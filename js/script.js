@@ -25,3 +25,34 @@ if (loginForm) {
         }
     });
 }
+let registerForm = document.getElementById("register-form");
+
+if (registerForm) {
+    registerForm.addEventListener("submit", function (event) {
+        let errors = [];
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value;
+        let confirm = document.getElementById("confirm_password").value;
+
+        if (username === "") {
+            errors.push("Please enter a username.");
+        } else if (username.length < 3) {
+            errors.push("Username must be at least 3 characters.");
+        }
+
+        if (password === "") {
+            errors.push("Please enter a password.");
+        } else if (password.length < 6) {
+            errors.push("Password must be at least 6 characters.");
+        }
+
+        if (password !== confirm) {
+            errors.push("Passwords do not match.");
+        }
+
+        if (errors.length > 0) {
+            event.preventDefault();
+            showErrors(errors);
+        }
+    });
+}

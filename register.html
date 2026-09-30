@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpot MSSU - Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+    <main class="auth-container">
+
+        <div class="site-title">
+            <h1>StudySpot MSSU</h1>
+            <p>Campus study spot reviews</p>
+        </div>
+
+        <div class="form-box">
+            <h2>Create an account</h2>
+
+            <div id="error-box" class="error-box"></div>
+
+            <form id="register-form" action="register.php" method="post">
+
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="your_username">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••">
+
+                <label for="confirm_password">Confirm password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••">
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <p class="switch-link">Already have an account? <a href="login.html">Log in</a></p>
+
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
