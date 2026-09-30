@@ -1,0 +1,139 @@
+:root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --border: #e3e5e8;
+    --text: #111827;
+    --muted: #4b5563;
+    --button: #111827;
+    --button-hover: #374151;
+    --error: #b91c1c;
+    --star: #d4a017;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 384px;
+}
+
+.site-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.site-title h1 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.site-title p {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.form-box {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.form-box h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text);
+    background-color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--text);
+    outline-offset: 1px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--button);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+.switch-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.switch-link a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.error-box {
+    display: none;
+    background-color: #fef2f2;
+    color: var(--error);
+    border: 1px solid #fecaca;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+    font-size: 14px;
+}
