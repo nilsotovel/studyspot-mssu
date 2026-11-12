@@ -24,6 +24,15 @@ if (loginForm) {
             showErrors(errors);
         }
     });
+	
+	// Display an error if login.php redirects back after the fail login
+	let urlParams = new URLSearchParams(window.location.search);
+	
+	console.log(window.location.search);
+	
+	if (urlParams.has("error")) {
+		showErrors(["Incorrect username or password"]);
+	}
 }
 let registerForm = document.getElementById("register-form");
 
