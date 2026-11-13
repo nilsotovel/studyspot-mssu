@@ -1,9 +1,20 @@
+// Shows a list of error messages in the red box
 function showErrors(errors) {
     let box = document.getElementById("error-box");
+    box.classList.remove("success");
     box.innerHTML = errors.join("<br>");
     box.style.display = "block";
 }
 
+// Shows one success message in the same box, styled green
+function showSuccess(message) {
+    let box = document.getElementById("error-box");
+    box.classList.add("success");
+    box.textContent = message;
+    box.style.display = "block";
+}
+
+// ----- Login page -----
 let loginForm = document.getElementById("login-form");
 
 if (loginForm) {
@@ -24,16 +35,19 @@ if (loginForm) {
             showErrors(errors);
         }
     });
-	
-	// Display an error if login.php redirects back after the fail login
-	let urlParams = new URLSearchParams(window.location.search);
-	
-	console.log(window.location.search);
-	
-	if (urlParams.has("error")) {
-		showErrors(["Incorrect username or password"]);
-	}
+
+    // Messages from login.php / register.php after a redirect
+    let loginParams = new URLSearchParams(window.location.search);
+
+    if (loginParams.has("error")) {
+        showErrors(["Incorrect username or password."]);
+    }
+    if (loginParams.has("registered")) {
+        showSuccess("Account created! You can log in now.");
+    }
 }
+
+// ----- Register page -----
 let registerForm = document.getElementById("register-form");
 
 if (registerForm) {
@@ -64,8 +78,21 @@ if (registerForm) {
             showErrors(errors);
         }
     });
+
+    // Messages from register.php after a redirect
+    let registerParams = new URLSearchParams(window.location.search);
+    let registerError = registerParams.get("error");
+
+    if (registerError === "taken") {
+        showErrors(["That username is already taken."]);
+    } else if (registerError === "mismatch") {
+        showErrors(["Passwords do not match."]);
+    } else if (registerError === "invalid") {
+        showErrors(["Username must be 3-50 characters and password at least 6."]);
+    }
 }
 
+// ----- Dashboard and edit page: review form -----
 let reviewForm = document.getElementById("review-form");
 
 if (reviewForm) {
@@ -92,6 +119,7 @@ if (reviewForm) {
     });
 }
 
+// ----- Dashboard: confirm before deleting -----
 let deleteForms = document.querySelectorAll(".delete-form");
 
 for (let i = 0; i < deleteForms.length; i++) {
