@@ -137,3 +137,202 @@ button:hover {
     margin-top: 8px;
     font-size: 14px;
 }
+
+.page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+}
+
+.dash-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.dash-header p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.user-info strong {
+    color: var(--text);
+}
+
+.logout-btn {
+    color: var(--text);
+    background-color: var(--card);
+    border: 1px solid #d1d5db;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    background-color: var(--bg);
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.count {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+section {
+    margin-bottom: 36px;
+}
+
+.field-label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.star-rating input {
+    position: absolute;
+    opacity: 0;
+}
+
+.star-rating label {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1;
+    color: #d1d5db;
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: var(--star);
+}
+
+.star-rating input:focus-visible + label {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+}
+
+#review-form > :first-child {
+    margin-top: 0;
+}
+
+.form-box > .error-box:first-child {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.post-btn {
+    width: auto;
+    padding: 10px 20px;
+}
+
+.review-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.review-top h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.stars {
+    color: var(--star);
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.review-author {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.review-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.edit-btn,
+.delete-btn {
+    width: auto;
+    margin-top: 0;
+    padding: 5px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.5;
+    border: 1px solid transparent;
+}
+
+.edit-btn {
+    color: var(--text);
+    border-color: #d1d5db;
+}
+
+.delete-btn {
+    background-color: var(--error);
+}
+
+.delete-btn:hover {
+    background-color: #7f1d1d;
+}
+
+@media (max-width: 600px) {
+    .dash-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .post-btn {
+        width: 100%;
+    }
+}

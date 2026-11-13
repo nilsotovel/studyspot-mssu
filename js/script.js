@@ -65,3 +65,39 @@ if (registerForm) {
         }
     });
 }
+
+let reviewForm = document.getElementById("review-form");
+
+if (reviewForm) {
+    reviewForm.addEventListener("submit", function (event) {
+        let errors = [];
+        let spot = document.getElementById("spot_id").value;
+        let rating = document.querySelector('input[name="rating"]:checked');
+        let text = document.getElementById("review_text").value.trim();
+
+        if (spot === "") {
+            errors.push("Please choose a study spot.");
+        }
+        if (rating === null) {
+            errors.push("Please pick a star rating.");
+        }
+        if (text === "") {
+            errors.push("Please write a review.");
+        }
+
+        if (errors.length > 0) {
+            event.preventDefault();
+            showErrors(errors);
+        }
+    });
+}
+
+let deleteForms = document.querySelectorAll(".delete-form");
+
+for (let i = 0; i < deleteForms.length; i++) {
+    deleteForms[i].addEventListener("submit", function (event) {
+        if (!confirm("Delete this review?")) {
+            event.preventDefault();
+        }
+    });
+}

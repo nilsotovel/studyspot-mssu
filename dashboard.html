@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpot MSSU - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="dash-header">
+            <div>
+                <h1>StudySpot MSSU</h1>
+                <p>Campus study spot reviews</p>
+            </div>
+            <div class="user-info">
+                <span>Logged in as <strong>daniel_m</strong></span>
+                <a href="logout.php" class="logout-btn">Log out</a>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">Add a review</h2>
+
+            <div class="form-box">
+                <div id="error-box" class="error-box"></div>
+
+                <form id="review-form" action="add_review.php" method="post">
+
+                    <label for="spot_id">Study spot</label>
+                    <select id="spot_id" name="spot_id">
+                        <option value="">Select a study spot</option>
+                        <option value="1">Spiva Library</option>
+                        <option value="2">Billingsly Student Center</option>
+                        <option value="3">Robert W. Plaster Free Enterprise Center</option>
+                        <option value="4">Coffee Shop</option>
+                        <option value="5">The Lion's Den</option>
+                        <option value="6">Julio S. León Health Science Center</option>
+                        <option value="7">Ummel Technology Building</option>
+                        <option value="8">Kuhn Hall</option>
+                        <option value="9">Reynolds Hall</option>
+                        <option value="10">Jeremiah "Jay" Nixon Hall</option>
+                        <option value="11">Taylor Hall</option>
+                        <option value="12">Webster Hall</option>
+                        <option value="13">Dianne Mayes Student Life Center</option>
+                    </select>
+
+                    <span class="field-label">Rating</span>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5" title="5 stars">&#9733;</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" title="4 stars">&#9733;</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" title="3 stars">&#9733;</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" title="2 stars">&#9733;</label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1" title="1 star">&#9733;</label>
+                    </div>
+
+                    <label for="review_text">Review</label>
+                    <textarea id="review_text" name="review_text" rows="4" placeholder="What made it a good (or bad) place to study?"></textarea>
+
+                    <button type="submit" class="post-btn">Post review</button>
+                </form>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Reviews <span class="count">(3)</span></h2>
+
+            <div class="review-card">
+                <div class="review-top">
+                    <h3>Spiva Library</h3>
+                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <p>Dead quiet after 6pm. My go-to before exams.</p>
+                <p class="review-author">Posted by daniel_m</p>
+                <div class="review-buttons">
+                    <a href="edit_review.php?id=1" class="edit-btn">Edit</a>
+                    <form action="delete_review.php" method="post" class="delete-form">
+                        <input type="hidden" name="review_id" value="1">
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-top">
+                    <h3>Billingsly Student Center</h3>
+                    <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                </div>
+                <p>Good for group work but too loud to focus alone.</p>
+                <p class="review-author">Posted by caden_r</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-top">
+                    <h3>Robert W. Plaster Free Enterprise Center</h3>
+                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                </div>
+                <p>Comfortable chairs and outlets, some foot traffic between classes.</p>
+                <p class="review-author">Posted by alex_t</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
