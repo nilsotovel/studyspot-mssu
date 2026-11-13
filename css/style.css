@@ -4,8 +4,11 @@
     --border: #e3e5e8;
     --text: #111827;
     --muted: #4b5563;
-    --button: #111827;
-    --button-hover: #374151;
+    --brand-green: #006937;
+    --brand-green-dark: #004d28;
+    --brand-gold: #f6ce3d;
+    --button: var(--brand-green);
+    --button-hover: var(--brand-green-dark);
     --error: #b91c1c;
     --star: #d4a017;
 }
@@ -335,4 +338,13 @@ section {
     .post-btn {
         width: 100%;
     }
+}
+
+.site-title h1,
+.dash-header h1 {
+    color: var(--brand-green);
+}
+
+.dash-header {
+    border-bottom: 3px solid var(--brand-gold);
 }
