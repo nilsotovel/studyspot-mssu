@@ -1,5 +1,5 @@
 :root {
-    --bg: #f7f8fa;
+    --bg: #eef2ef;
     --card: #ffffff;
     --border: #e3e5e8;
     --text: #111827;
@@ -21,7 +21,8 @@
 
 body {
     font-family: -apple-system, "Segoe UI", Arial, sans-serif;
-    background-color: var(--bg);
+    background-color: var(--brand-green);
+    border-top: 6px solid var(--brand-gold);
     color: var(--text);
     line-height: 1.5;
 }
@@ -47,10 +48,11 @@ body {
 .site-title h1 {
     font-size: 26px;
     font-weight: 600;
+    color: white;
 }
 
 .site-title p {
-    color: var(--muted);
+    color: #d7e9dd;
     font-size: 15px;
 }
 
@@ -122,11 +124,11 @@ button:hover {
     margin-top: 20px;
     text-align: center;
     font-size: 15px;
-    color: var(--muted);
+    color: #d7e9dd;
 }
 
 .switch-link a {
-    color: var(--text);
+    color: var(--brand-gold);
     font-weight: 500;
 }
 
@@ -152,18 +154,19 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 3px solid var(--brand-gold);
     margin-bottom: 28px;
 }
 
 .dash-header h1 {
     font-size: 24px;
     font-weight: 600;
+    color: white;
 }
 
 .dash-header p {
     font-size: 14px;
-    color: var(--muted);
+    color: #d7e9dd;
 }
 
 .user-info {
@@ -171,11 +174,11 @@ button:hover {
     align-items: center;
     gap: 12px;
     font-size: 14px;
-    color: var(--muted);
+    color: #d7e9dd;
 }
 
 .user-info strong {
-    color: var(--text);
+    color: white;
 }
 
 .logout-btn {
@@ -196,13 +199,14 @@ button:hover {
 .section-title {
     font-size: 20px;
     font-weight: 600;
+    color: white;
     margin-bottom: 12px;
 }
 
 .count {
     font-size: 14px;
     font-weight: 400;
-    color: var(--muted);
+    color: #d7e9dd;
 }
 
 section {
@@ -338,13 +342,4 @@ section {
     .post-btn {
         width: 100%;
     }
-}
-
-.site-title h1,
-.dash-header h1 {
-    color: var(--brand-green);
-}
-
-.dash-header {
-    border-bottom: 3px solid var(--brand-gold);
 }
