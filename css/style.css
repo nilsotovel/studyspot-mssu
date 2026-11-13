@@ -237,7 +237,8 @@ section {
     margin: 0;
     font-size: 30px;
     line-height: 1;
-    color: #d1d5db;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--muted);
     cursor: pointer;
 }
 
@@ -245,6 +246,7 @@ section {
 .star-rating label:hover,
 .star-rating label:hover ~ label {
     color: var(--star);
+    -webkit-text-stroke-color: #a67c00;
 }
 
 .star-rating input:focus-visible + label {
