@@ -48,12 +48,12 @@
 			$_SESSION['user_id'] = $user_id;
 			$_SESSION['username'] = $stored_username;
 			
-			// redirect to the main page
-			// input the main page here when it gets made
+			// redirect to the dashboard page
+			// input the dashboard page here when it gets made
 			mysqli_stmt_close($stmt);
 			mysqli_close($conn);
 			
-			header("Location: main.html");
+			header("Location: dashboard.html");
 			exit();
 		}
 	}
