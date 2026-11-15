@@ -1,7 +1,7 @@
 :root {
+    --bg: #eef2ef;
     --card: #e9f1eb;
     --border: #d3e2d8;
-    --border: #e3e5e8;
     --text: #111827;
     --muted: #4b5563;
     --brand-green: #006937;
@@ -344,4 +344,33 @@ section {
     .post-btn {
         width: 100%;
     }
+}
+
+/* ===== Edit page buttons ===== */
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions .post-btn {
+    margin-top: 0;
+}
+
+.form-actions .edit-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+}
+
+/* ===== Messages ===== */
+.error-box.success {
+    background-color: #ecfdf3;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.empty-note {
+    color: #d7e9dd;
 }

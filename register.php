@@ -1,45 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-	<body>
-	<?php
-	// Get information submitted from HTML form
-	$username = trim($_POST['username'] ?? '');
-	$password = $_POST['password'] ?? '';
-	$confirm_password = $_POST['confirm_password'] ?? '';
-	
-	$servername = getenv('DB_HOST');
-	$db_username = getenv('DB_USER');
-	$db_password = getenv('DB_PASS');
-	$dbname = getenv('DB_NAME');
+<?php
+require "includes/db_connect.php";
 
-	$conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
-	if (!$conn) {
-		die ("Connection failed: " .mysqli_connect_error());
-	}
-	
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+// Only accept the register form (POST)
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: register.html");
+    exit();
+}
 
-	$sql = "INSERT INTO Users (username, password_hash) VALUES (?, ?)";	
-	// prepares the sql command
-	$stmt = mysqli_prepare($conn, $sql);
-	
-	// supplies the username and password hash
-	mysqli_stmt_bind_param(
-		$stmt,
-		"ss",
-		$username,
-		$password_hash
-	);
-	
-    if (mysqli_stmt_execute($stmt)) {
-		echo "Account successfully created!";
-	} else {
-		echo "Unable to create account. The username may already exist.";
-	}
+// Get information submitted from the HTML form
+$username = trim($_POST['username'] ?? '');
+$password = $_POST['password'] ?? '';
+$confirm_password = $_POST['confirm_password'] ?? '';
 
-	// Closing connections
-	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
-	?>
-    </body>
-</html>
+// Server-side validation: the same rules as script.js,
+// checked again here because JavaScript can be turned off or bypassed
+if (strlen($username) < 3 || strlen($username) > 50) {
+    header("Location: register.html?error=invalid");
+    exit();
+}
+if (strlen($password) < 6) {
+    header("Location: register.html?error=invalid");
+    exit();
+}
+if ($password !== $confirm_password) {
+    header("Location: register.html?error=mismatch");
+    exit();
+}
+
+// Make sure the username is not already taken
+$sql = "SELECT user_id FROM users WHERE username = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_store_result($stmt);
+$taken = mysqli_stmt_num_rows($stmt) > 0;
+mysqli_stmt_close($stmt);
+
+if ($taken) {
+    mysqli_close($conn);
+    header("Location: register.html?error=taken");
+    exit();
+}
+
+// Never store the real password, only its hash
+$password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+$sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ss", $username, $password_hash);
+
+try {
+    mysqli_stmt_execute($stmt);
+} catch (mysqli_sql_exception $e) {
+    // Backup in case two people register the same name at the same moment
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    header("Location: register.html?error=taken");
+    exit();
+}
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
+
+header("Location: login.html?registered=1");
+exit();
